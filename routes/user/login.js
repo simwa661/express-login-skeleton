@@ -1,31 +1,22 @@
 var express = require('express');
 var router = express.Router();
-var appRoot = require('app-root-path');
-var db_init = require(appRoot + "/db/db");
 var sha256 = require("sha256");
+var appRoot = require('app-root-path');
+var loginModule = require(appRoot + "/javascripts/login_module")
 
 /* GET home page. */
-router.post('/', function(req, res) {
-  console.log("in login");
-  var email = req.body.email;
-  var password = req.body.password;
-  console.log();
-  db_init.users.findOne({email:email},function(e, result){
-    console.log("in callback");
-    if (e){
-      console.log("e");
-      res.render("index", {message: "Inloggningen misslyckades"});
-    }
-    if(result.password == sha256(password)){
-      console.log("correct password");
-      req.session.user=email;
-      req.session.logged_in = true;
-      res.redirect("/");
-    }else{
-      console.log("not correct password");
-      res.render("login", {message: "Inloggningen misslyckades"});
-    }
-  })
+router.post('/', function(req, res, next) {
+  var email = req.body.email.replace(/\s/g,'');
+  var password = req.body.password.replace(/\s/g,'');
+  test = loginModule.verify({ "email": email }, sha256(password), req.session);
+  test.then(() => {
+    if(email === "simonwallin1@gmail.com"){
+      req.session.admin = true;
+    };
+    res.redirect("/admin");
+  }).catch(() => {
+    res.redirect("/");
+  });
 });
 
 module.exports = router;

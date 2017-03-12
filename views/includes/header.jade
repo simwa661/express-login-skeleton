@@ -1,0 +1,21 @@
+div#header-wrapper
+  div#header
+    ul.header-menu
+      li
+        a(href="/") Home
+      if admin
+        li
+          a(href="/admin") Admin
+    .header-title Bff's
+    if !logged_in
+      ul.header-menu.right
+        li
+          a.login-link Login
+      form#login-section(method="post", action="/login")
+        input#username(name="email")
+        input#password(name="password", type="password")
+        input.submit(type="submit")
+    if logged_in
+      ul.header-menu.right
+        li
+          a.logout-link(href="/logout") Logout

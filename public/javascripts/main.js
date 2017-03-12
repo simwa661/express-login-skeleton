@@ -1,16 +1,11 @@
 $(document).ready(function() {
+  if($(".post-section").length > 0){
+    setInterval(function() {
+      $(".post-section").load("/post")
+    }, 2000);
+  };
 
-  $(window).mousemove(function(event){
-    if($(window).scrollTop() !== 0){
-      if(event.pageY - $(window).scrollTop() < 100){
-        $("#header").slideDown();
-      }else{
-        if($("#header").css("display") == "inline-block"){
-          $("#header").slideUp();
-        };
-      };
-    }else{
-      $("#header").slideDown();
-    };
+  $(".login-link").click(function() {
+    $("#login-section").toggle();
   });
 });

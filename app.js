@@ -10,9 +10,13 @@ var index = require('./routes/index');
 var login = require('./routes/user/login');
 var logout = require('./routes/user/logout');
 var join = require("./routes/user/join");
-
+var admin = require("./routes/admin/admin");
+var remove_user = require("./routes/admin/remove_user");
+var remove_post = require("./routes/admin/remove_post");
+var loginModule = require("./javascripts/login_module");
+var postModule = require("./routes/posting/post");
 var app = express();
-
+console.log(loginModule);
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -26,10 +30,16 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({secret: 'ssshhhhh'}));
 
+
+
 app.use('/', index);
 app.use('/login', login);
 app.use('/logout', logout);
 app.use('/join', join);
+app.use('/admin', admin);
+app.use('/remove_user', remove_user);
+app.use('/remove_post', remove_post);
+app.use('/post', postModule);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

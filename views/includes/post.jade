@@ -1,0 +1,10 @@
+block content
+  each post, i in posts
+    .post-wrapper
+      .post-header
+        .post-author=post.user
+        .post-time=post.time
+        if post.user == logged_in
+          a.remove-link(href="/remove_post?postId=" + post._id ) remove post
+      .post-body
+        .post-content=post.content

@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  div.user-list
+    div.user-list-section
+      h2.user-list-heading Users
+      each user, i in users
+        p.user-list-line= user.username
+        p.user-list-line= user.email
+        a.remove-link(href="/remove_user?email=" + user.email) remove user
+        br
+
+  div.user-list
+    div.user-list-section
+      h2.user-list-heading Add User
+      include includes/joinform
+
+  div.user-list
+    div.user-list-section
+      h2.user-list-heading Posts
+      each post, i in posts
+        p.user-list-line= post.content
+        p.user-list-line= post.user
+        p.user-list-line= post.time
+        a.remove-link(href="/remove_user?postId=" + post._id ) remove post
+        br

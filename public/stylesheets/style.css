@@ -3,35 +3,45 @@ html{
 }
 
 body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 18px "Lucida Grande", Helvetica, Arial, sans-serif;
   margin: 0;
   height: 2000px;
 }
 
 a {
   color: #00B7FF;
+  text-decoration: none !important;
+}
+
+.right{
+  float: right !important;
 }
 
 div{
   display: inline-block;
+  vertical-align: top;
 }
 
 #content{
-  margin-top: 10rem;
+  display: block;
+  text-align: center;
 }
 
 #header-wrapper{
-  position: fixed;
-  height: 8rem;
-  padding: 1.5rem;
+  padding: 1rem;
   width: 100%;
   border: none;
+  background-color: rgba(157, 154, 213, 0.12);
+}
+
+.header-menu li{
+  display: inline-block;
+  margin-right: 1rem;
 }
 
 #header{
-  width: 95%;
+  width: 98%;
   border: none;
-  height: 6rem;
   text-align: center;
 }
 
@@ -40,19 +50,82 @@ div{
 }
 
 .submit{
-  display: none;
+
 }
 
 input{
   height: 1.5rem;
   width: 12rem;
-  margin-left: 1.5rem;
+  margin:1.5rem 0;
+  display: block;
 }
 
 #login-section{
+  background-color: rgba(157, 154, 213, 0.12);
+  display: none;
+  position: absolute;
+  right: 0px;
+}
+
+.logout-link, .login-link{
   float: right;
 }
 
-.logout-link{
-  float: right;
+.user-list{
+  padding: 3rem;
+}
+
+.user-list-heading{
+  font-size: 2rem;
+}
+
+.user-list-line{
+  font-size: 1rem;
+  display: inline-block;
+}
+
+.user-list-line::after{
+  content: "_ _";
+}
+
+.header-menu{
+  float: left;
+}
+
+.post-wrapper{
+  margin: 1rem auto;
+  text-align: left;
+  display: block;
+  width: 600px;
+  border: solid rgba(157, 154, 213, 0.12);
+  padding: 1rem;
+}
+
+.testdiv{
+  width: 200px;
+  height: 200px;
+  background: blue;
+}
+
+.post-author{
+  font-size: 1.5rem;
+  display: block;
+}
+
+.post-content{
+  margin-top: 1rem;
+  display: block;
+}
+
+.post-form{
+  margin: auto;
+  width: 600px;
+}
+
+.post-time{
+  display: block;
+}
+
+.post-body{
+  display: block;
 }

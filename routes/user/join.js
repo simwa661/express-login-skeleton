@@ -7,36 +7,36 @@ var sha256 = require("sha256");
 /* GET home page. */
 router.get('/', function(req, res, next) {
   if(!req.body.logged_in){
-      res.render("join");
+    res.render("join");
   }else{
-      res.redirect("/");
+    res.redirect("/");
   };
 });
 
 
 router.post('/', function(req, res) {
   var already_existing;
-  var firstname = req.body.firstname;
-  var lastname = req.body.lastname;
+  var username = req.body.username;
   var password = req.body.password;
   var email = req.body.email;
   db_init.users.findOne({email:email}, function(e, result){
     if (e) {
       console.log("error: " + e);
     };
-    console.log(result);
     if(result){
       already_existing = true;
     };
     if (!already_existing) {
-      console.log("! already_existing");
       db_init.users.insert({
         email:email,
-        firstname:firstname,
-        lastname:lastname,
+        username: username,
         password: sha256(password),
       }, function(){
-        res.redirect("/");
+        if(req.session.admin){
+          res.redirect("/admin");
+        }else{
+          res.redirect("/");
+        };
       });
     };
   });

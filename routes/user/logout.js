@@ -5,6 +5,7 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   req.session.username = null;
   req.session.logged_in = false;
+  req.session.admin = false;
   res.redirect("/");
 });
 

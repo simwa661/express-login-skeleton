@@ -5,10 +5,14 @@ var sha256 = require('sha256');
 
 var now = new Date();
 var users = db.collection("users");
+var posts = db.collection("posts");
 
 function init_db(){
-  users.insert({username:"simon wallin", password:sha256("sw0049sw"), email:"simon.wallin@eyevinn.se", admin: true});
+  users.insert({username:"simonwallin", password:sha256("sw0049sw"), email:"simonwallin1@gmail.com", admin: true});
 };
+users.index( { "email": 1 }, { unique: true } );
+init_db();
 
 exports.users = users;
+exports.posts = posts;
 exports.db = db;
