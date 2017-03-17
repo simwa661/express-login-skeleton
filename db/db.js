@@ -6,6 +6,7 @@ var sha256 = require('sha256');
 var now = new Date();
 var users = db.collection("users");
 var posts = db.collection("posts");
+var comments = db.collection("comments");
 
 function init_db(){
   users.insert({username:"simonwallin", password:sha256("sw0049sw"), email:"simonwallin1@gmail.com", admin: true});
@@ -15,4 +16,5 @@ init_db();
 
 exports.users = users;
 exports.posts = posts;
+exports.comments = comments;
 exports.db = db;

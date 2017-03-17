@@ -4,7 +4,7 @@ var db_init = require(appRoot + "/db/db");
 
 
 function createPost(user, content){
-  var time = new Date();
+  var time = new Date().toUTCString();
   db_init.posts.insert({
     "user": user,
     "content": content,

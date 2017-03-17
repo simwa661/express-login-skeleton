@@ -15,6 +15,7 @@ var remove_user = require("./routes/admin/remove_user");
 var remove_post = require("./routes/admin/remove_post");
 var loginModule = require("./javascripts/login_module");
 var postModule = require("./routes/posting/post");
+var commentModule = require("./routes/posting/comment");
 var app = express();
 console.log(loginModule);
 // view engine setup
@@ -40,6 +41,7 @@ app.use('/admin', admin);
 app.use('/remove_user', remove_user);
 app.use('/remove_post', remove_post);
 app.use('/post', postModule);
+app.use('/comment', commentModule);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

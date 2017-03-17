@@ -1,10 +1,16 @@
 block content
   each post, i in posts
-    .post-wrapper
+    .post-wrapper(id=post._id)
       .post-header
-        .post-author=post.user
+        .post-author.interactive-element=post.user
         .post-time=post.time
         if post.user == logged_in
-          a.remove-link(href="/remove_post?postId=" + post._id ) remove post
+          a.remove-link(href="/remove_post?postId=" + post._id ) X
       .post-body
         .post-content=post.content
+      .post-footer
+        div.like-btn.post-footer-link.interactive-element Like
+        div.comment-btn.post-footer-link.interactive-element Comment
+        form.post-comment-form(action="/comment" method="post")
+          input.post-comment-input(name="commentContent")
+          input(type="hidden", name="postId", val=post._id)
